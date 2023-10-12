@@ -1,0 +1,196 @@
+<app-page-banner title="Sign Up for Admin"></app-page-banner>
+<section class="contact py-5" id="contact">
+  <div class="container py-md-4 py-3">
+    <div class="main-grid-contact">
+      <div class="row mt-5 mx-0 justify-content-center">
+        <!-- contact form -->
+        <div class="col-lg-6 content-form-right p-0">
+          <div class="form-w3ls p-md-5 p-4 mb-4">
+            <h4 class="mb-4 sec-title-w3 text-center">
+              Please fill in the informations
+            </h4>
+            <form [formGroup]="signupForm">
+              <div class="row">
+                <div class="col-sm-6 form-group pr-sm-1">
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="firstName"
+                    placeholder="First Name"
+                  />
+                </div>
+
+                <div class="col-sm-6 form-group pl-sm-1">
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="lastName"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div
+                  class="col-6 text-danger"
+                  *ngIf="
+                    signupForm.controls['firstName'].invalid &&
+                    (signupForm.controls['firstName'].touched ||
+                      signupForm.controls['firstName'].dirty)
+                  "
+                >
+                  <div *ngIf="signupForm.controls['firstName'].errors.required">
+                    field is required
+                  </div>
+                  <div
+                    *ngIf="signupForm.controls['firstName'].errors.minlength"
+                  >
+                    needs to be at least 4 characters
+                  </div>
+                </div>
+                <div
+                  class="col-6 text-danger"
+                  *ngIf="
+                    signupForm.controls['lastName'].invalid &&
+                    (signupForm.controls['lastName'].touched ||
+                      signupForm.controls['lastName'].dirty)
+                  "
+                >
+                  <div *ngIf="signupForm.controls['lastName'].errors.required">
+                    field is required
+                  </div>
+                  <div *ngIf="signupForm.controls['lastName'].errors.minlength">
+                    needs to be at least 4 characters
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="email"
+                  formControlName="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  signupForm.controls['email'].invalid &&
+                  (signupForm.controls['email'].touched ||
+                    signupForm.controls['email'].dirty)
+                "
+              >
+                <div *ngIf="signupForm.controls['email'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="signupForm.controls['email'].errors.email">
+                  Incorrect email format
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="tel"
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  signupForm.controls['tel'].invalid &&
+                  (signupForm.controls['tel'].touched ||
+                    signupForm.controls['tel'].dirty)
+                "
+              >
+                <div *ngIf="signupForm.controls['tel'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="signupForm.controls['tel'].errors.pattern">
+                  Please a correct phone number
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="address"
+                  placeholder="Address"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  signupForm.controls['address'].invalid &&
+                  (signupForm.controls['address'].touched ||
+                    signupForm.controls['address'].dirty)
+                "
+              >
+                <div *ngIf="signupForm.controls['address'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="signupForm.controls['address'].errors.minlength">
+                  needs to be at least 4 characters
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="password"
+                  formControlName="pwd"
+                  placeholder="Password"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  signupForm.controls['pwd'].invalid &&
+                  (signupForm.controls['pwd'].touched ||
+                    signupForm.controls['pwd'].dirty)
+                "
+              >
+                <div *ngIf="signupForm.controls['pwd'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="signupForm.controls['pwd'].errors.pattern">
+                  Password is weak
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="password"
+                  formControlName="confirmPwd"
+                  placeholder="Confirm Password"
+                />
+              </div>
+              <div
+                class="col-6 text-danger"
+                *ngIf="
+                  signupForm.controls['confirmPwd'].invalid &&
+                  (signupForm.controls['confirmPwd'].touched ||
+                    signupForm.controls['confirmPwd'].dirty)
+                "
+              >
+                <div
+                  *ngIf="signupForm.controls['confirmPwd'].errors.confirmError"
+                >
+                  Please type in the same password
+                </div>
+              </div>
+              <div class="input-group1 text-center">
+                <button
+                  class="btn button-style"
+                  type="submit"
+                  [disabled]="signupForm.invalid"
+                  (click)="signup()"
+                >
+                  Sign Up
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

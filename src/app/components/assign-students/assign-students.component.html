@@ -1,0 +1,51 @@
+<app-page-banner title="Assign Students"></app-page-banner>
+<div class="features-bg pb-lg-5 pt-lg-4 py-4">
+  <div class="container">
+    <div class="title-main text-center mx-auto">
+      <h3 class="title-big">Courses Assignment</h3>
+      <p class="sub-title mt-2">
+        You can easily assign the corresponding course for each student registered in our school
+      </p>
+    </div>
+  </div>
+</div>
+<section class="w3l-teams-32-main">
+  <div class="teams-32 py-md-4">
+    <div class="container">
+      <div class="row main-contteam-32 mt-sm-5 pt-lg-2">
+        <div class="col-lg-3 col-6 team-main-19">
+          <app-single-student [student]="student"></app-single-student>
+        </div>
+        <div class="col-8">
+          <h5 class="title-big mb-3">
+            Assign Course for
+            <span class="text-danger">{{ student.firstName | uppercase }}</span>
+          </h5>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01"
+                >Options</label
+              >
+            </div>
+            <select
+              class="custom-select"
+              id="inputGroupSelect01"
+              (change)="getCourseId($event)"
+            >
+              <option selected value="none">Choose...</option>
+              <option *ngFor="let m of coursesTab" [value]="m._id">
+                {{ m.name }} by Pr.{{m.createdBy.lastName | uppercase}}
+              </option>
+            </select>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary" (click)="assignCourseToStudent()">
+              Assign This Course
+            </button>
+          </div>
+          <div class="text-center text-danger mt-4">{{ resMsg }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

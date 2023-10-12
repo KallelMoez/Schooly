@@ -1,0 +1,173 @@
+<app-page-banner title="Edit Parent"></app-page-banner>
+<section class="contact py-5" id="contact">
+  <div class="container py-md-4 py-3">
+    <div class="main-grid-contact">
+      <div class="row mt-5 mx-0 justify-content-center">
+        <!-- contact form -->
+        <div class="col-lg-6 content-form-right p-0">
+          <div class="form-w3ls p-md-5 p-4 mb-4">
+            <h4 class="mb-4 sec-title-w3 text-center">
+              Please fill in the informations
+            </h4>
+            <form [formGroup]="editParentForm">
+              <div class="row">
+                <div class="col-sm-6 form-group pr-sm-1">
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="firstName"
+                    [(ngModel)]="parent.firstName"
+                    placeholder="First Name"
+                  />
+                </div>
+
+                <div class="col-sm-6 form-group pl-sm-1">
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="lastName"
+                    [(ngModel)]="parent.lastName"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div
+                  class="col-6 text-danger"
+                  *ngIf="
+                    editParentForm.controls['firstName'].invalid &&
+                    (editParentForm.controls['firstName'].touched ||
+                      editParentForm.controls['firstName'].dirty)
+                  "
+                >
+                  <div
+                    *ngIf="
+                      editParentForm.controls['firstName'].errors.required
+                    "
+                  >
+                    field is required
+                  </div>
+                  <div
+                    *ngIf="
+                      editParentForm.controls['firstName'].errors.minlength
+                    "
+                  >
+                    needs to be at least 4 characters
+                  </div>
+                </div>
+                <div
+                  class="col-6 text-danger"
+                  *ngIf="
+                    editParentForm.controls['lastName'].invalid &&
+                    (editParentForm.controls['lastName'].touched ||
+                      editParentForm.controls['lastName'].dirty)
+                  "
+                >
+                  <div
+                    *ngIf="editParentForm.controls['lastName'].errors.required"
+                  >
+                    field is required
+                  </div>
+                  <div
+                    *ngIf="
+                      editParentForm.controls['lastName'].errors.minlength
+                    "
+                  >
+                    needs to be at least 4 characters
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="email"
+                  formControlName="email"
+                  [(ngModel)]="parent.email"
+                  placeholder="Email"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  editParentForm.controls['email'].invalid &&
+                  (editParentForm.controls['email'].touched ||
+                    editParentForm.controls['email'].dirty)
+                "
+              >
+                <div *ngIf="editParentForm.controls['email'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="editParentForm.controls['email'].errors.email">
+                  Incorrect email format
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="tel"
+                  [(ngModel)]="parent.tel"
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  editParentForm.controls['tel'].invalid &&
+                  (editParentForm.controls['tel'].touched ||
+                    editParentForm.controls['tel'].dirty)
+                "
+              >
+                <div *ngIf="editParentForm.controls['tel'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="editParentForm.controls['tel'].errors.minlength">
+                  needs to be at least 8 characters
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="address"
+                  [(ngModel)]="parent.address"
+                  placeholder="Address"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  editParentForm.controls['address'].invalid &&
+                  (editParentForm.controls['address'].touched ||
+                    editParentForm.controls['address'].dirty)
+                "
+              >
+                <div
+                  *ngIf="editParentForm.controls['address'].errors.required"
+                >
+                  field is required
+                </div>
+                <div
+                  *ngIf="editParentForm.controls['address'].errors.minlength"
+                >
+                  needs to be at least 4 characters
+                </div>
+              </div>
+
+              <div class="input-group1 text-center">
+                <button
+                  class="btn button-style"
+                  type="submit"
+                  [disabled]="editParentForm.invalid"
+                  (click)="update()"
+                >
+                  Validate
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

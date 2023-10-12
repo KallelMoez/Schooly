@@ -1,0 +1,101 @@
+<app-page-banner title="Update Course"></app-page-banner>
+<section class="contact py-5" id="contact">
+  <div class="container py-md-4 py-3">
+    <div class="title-main text-center mx-auto mb-md-4">
+      <h3 class="title-big">Get In Touch</h3>
+      <p class="sub-title mt-2">
+        We're here to help and make your experience as smooth as possible. If you ever need assistance or have any questions, please don't hesitate to reach out to us – <a class="text-primary" routerLink="/contact">Contact Us</a>
+      </p>
+    </div>
+    <div class="border rounded mx-auto shadow w-50 my-5" >
+      <!-- contact form -->
+      <div class="content-form-right p-0 ">
+        <div class="form-w3ls p-md-5 p-4">
+          <h4 class="mb-4 sec-title-w3">Fill in your informations</h4>
+          <form
+            [formGroup]="updateCourseForm"
+          >
+            <div class="row">
+              <div class="col-sm-12 form-group pr-sm-1">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Course Name"
+                  formControlName="name"
+                  [(ngModel)]="course.name"
+                />
+              </div>
+              <div
+                class="col-sm-12 text-danger text-center mb-3"
+                *ngIf="
+                  updateCourseForm.controls['name'].invalid &&
+                  (updateCourseForm.controls['name'].touched ||
+                    updateCourseForm.controls['name'].dirty)
+                "
+              >
+                <div *ngIf="updateCourseForm.controls['name'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="updateCourseForm.controls['name'].errors.minlength">
+                  needs to be at least 8 characters
+                </div>
+              </div>
+              <div class="col-sm-12 form-group pr-sm-1">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Description"
+                  formControlName="description"
+                  [(ngModel)]="course.description"
+                />
+              </div>
+              <div
+                class="col-sm-12 text-danger text-center mb-3"
+                *ngIf="
+                  updateCourseForm.controls['description'].invalid &&
+                  (updateCourseForm.controls['description'].touched ||
+                    updateCourseForm.controls['description'].dirty)
+                "
+              >
+                <div *ngIf="updateCourseForm.controls['description'].errors.required">
+                  field is required
+                </div>
+              </div>
+              <div class="col-sm-12 form-group pr-sm-1">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Period"
+                  formControlName="period"
+                  [(ngModel)]="course.period"
+                />
+              </div>
+              <div
+                class="col-sm-12 text-danger text-center mb-3"
+                *ngIf="
+                  updateCourseForm.controls['period'].invalid &&
+                  (updateCourseForm.controls['period'].touched ||
+                    updateCourseForm.controls['period'].dirty)
+                "
+              >
+                <div *ngIf="updateCourseForm.controls['period'].errors.required">
+                  field is required
+                </div>
+              </div>
+              
+          
+            </div>
+
+            <div class="input-group1 text-center">
+              <button class="btn button-style" type="submit" [disabled]="updateCourseForm.invalid" (click)="validate()">
+                Update Course
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="text-center">{{resMsg}}</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

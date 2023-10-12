@@ -1,0 +1,204 @@
+<app-page-banner title="Edit Teacher"></app-page-banner>
+<section class="contact py-5" id="contact">
+  <div class="container py-md-4 py-3">
+    <div class="main-grid-contact">
+      <div class="row mt-5 mx-0 justify-content-center">
+        <!-- contact form -->
+        <div class="col-lg-6 content-form-right p-0">
+          <div class="form-w3ls p-md-5 p-4 mb-4">
+            <h4 class="mb-4 sec-title-w3 text-center">
+              Please fill in the informations
+            </h4>
+            <form [formGroup]="editTeacherForm">
+              <div class="row">
+                <div class="col-sm-6 form-group pr-sm-1">
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="firstName"
+                    [(ngModel)]="teacher.firstName"
+                    placeholder="First Name"
+                  />
+                </div>
+
+                <div class="col-sm-6 form-group pl-sm-1">
+                  <input
+                    class="form-control"
+                    type="text"
+                    formControlName="lastName"
+                    [(ngModel)]="teacher.lastName"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div
+                  class="col-6 text-danger"
+                  *ngIf="
+                    editTeacherForm.controls['firstName'].invalid &&
+                    (editTeacherForm.controls['firstName'].touched ||
+                      editTeacherForm.controls['firstName'].dirty)
+                  "
+                >
+                  <div
+                    *ngIf="
+                      editTeacherForm.controls['firstName'].errors.required
+                    "
+                  >
+                    field is required
+                  </div>
+                  <div
+                    *ngIf="
+                      editTeacherForm.controls['firstName'].errors.minlength
+                    "
+                  >
+                    needs to be at least 4 characters
+                  </div>
+                </div>
+                <div
+                  class="col-6 text-danger"
+                  *ngIf="
+                    editTeacherForm.controls['lastName'].invalid &&
+                    (editTeacherForm.controls['lastName'].touched ||
+                      editTeacherForm.controls['lastName'].dirty)
+                  "
+                >
+                  <div
+                    *ngIf="editTeacherForm.controls['lastName'].errors.required"
+                  >
+                    field is required
+                  </div>
+                  <div
+                    *ngIf="
+                      editTeacherForm.controls['lastName'].errors.minlength
+                    "
+                  >
+                    needs to be at least 4 characters
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="email"
+                  formControlName="email"
+                  [(ngModel)]="teacher.email"
+                  placeholder="Email"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  editTeacherForm.controls['email'].invalid &&
+                  (editTeacherForm.controls['email'].touched ||
+                    editTeacherForm.controls['email'].dirty)
+                "
+              >
+                <div *ngIf="editTeacherForm.controls['email'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="editTeacherForm.controls['email'].errors.email">
+                  Incorrect email format
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="tel"
+                  [(ngModel)]="teacher.tel"
+                  placeholder="Phone Number"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  editTeacherForm.controls['tel'].invalid &&
+                  (editTeacherForm.controls['tel'].touched ||
+                    editTeacherForm.controls['tel'].dirty)
+                "
+              >
+                <div *ngIf="editTeacherForm.controls['tel'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="editTeacherForm.controls['tel'].errors.minlength">
+                  needs to be at least 8 characters
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="address"
+                  [(ngModel)]="teacher.address"
+                  placeholder="Address"
+                />
+              </div>
+              <div
+                class="text-danger"
+                *ngIf="
+                  editTeacherForm.controls['address'].invalid &&
+                  (editTeacherForm.controls['address'].touched ||
+                    editTeacherForm.controls['address'].dirty)
+                "
+              >
+                <div
+                  *ngIf="editTeacherForm.controls['address'].errors.required"
+                >
+                  field is required
+                </div>
+                <div
+                  *ngIf="editTeacherForm.controls['address'].errors.minlength"
+                >
+                  needs to be at least 4 characters
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  formControlName="speciality"
+                  [(ngModel)]="teacher.speciality"
+                  placeholder="Speciality"
+                />
+              </div>
+              <div
+                class="col-6 text-danger"
+                *ngIf="
+                  editTeacherForm.controls['speciality'].invalid &&
+                  (editTeacherForm.controls['speciality'].touched ||
+                    editTeacherForm.controls['speciality'].dirty)
+                "
+              >
+                <div
+                  *ngIf="editTeacherForm.controls['speciality'].errors.required"
+                >
+                  field is required
+                </div>
+                <div
+                  *ngIf="
+                    editTeacherForm.controls['speciality'].errors.minlength
+                  "
+                >
+                  needs to be at least 4 characters
+                </div>
+              </div>
+
+              <div class="input-group1 text-center">
+                <button
+                  class="btn button-style"
+                  type="submit"
+                  [disabled]="editTeacherForm.invalid"
+                  (click)="update()"
+                >
+                  Validate
+                  <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

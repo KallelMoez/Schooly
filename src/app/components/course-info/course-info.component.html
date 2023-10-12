@@ -1,0 +1,52 @@
+<section id="home" class="w3l-banner py-5">
+  <div class="container pt-5 pb-md-4">
+    <div class="row align-items-center">
+      <div class="col-md-6 banner-left pt-md-0 pt-5">
+        <h5 class="mb-sm-4 mb-3 title text-danger">Course :</h5>
+        <h3 class="mb-sm-4 mb-3 title">{{ course.name }}</h3>
+      </div>
+      <div class="col-md-6 banner-right mt-md-0 mt-4">
+        <img class="img-fluid" src="assets/images/b1.png" alt=" " />
+      </div>
+    </div>
+  </div>
+</section>
+<div class="title-main text-center mx-auto mb-4">
+  <h3 class="title-big">Students List</h3>
+</div>
+<section class="w3l-teams-32-main">
+  <div class="teams-32 py-md-4">
+    <div class="container">
+      <div class="row main-contteam-32 pt-lg-2">
+        <div
+          *ngFor="let m of course.assignedTo"
+          class="col-lg-3 col-6 team-main-19"
+        >
+          <div class="column-19">
+              <img class="img-fluid" [src]="m.img" alt=" "
+            />
+          </div>
+          <div class="right-team-9">
+            <h6>
+                {{ m.firstName }} {{ m.lastName }}
+            </h6>
+            <div *ngIf="connectedUser.role=='teacher'">
+            <div *ngIf="checkGrade(m._id)">
+                <a [routerLink]="'/student/' + m._id + '/course/' + course._id"
+              >
+              <p class="sm-text-32">check {{m.firstName}}'s note</p>
+              </a>
+            </div>
+            <div *ngIf="!checkGrade(m._id)">
+                <a [routerLink]="'/student/' + m._id + '/course/' + course._id"
+              >
+              <p class="sm-text-32">Add a note for {{m.firstName}} </p>
+              </a>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

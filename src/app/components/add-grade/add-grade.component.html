@@ -1,0 +1,86 @@
+<app-page-banner title="Add Grade"></app-page-banner>
+<section class="contact py-5" id="contact">
+  <div class="container py-md-4 py-3">
+    <div class="title-main text-center mx-auto mb-md-4">
+      <h3 class="title-big">Get In Touch</h3>
+      <p class="sub-title mt-2">
+        We're here to help and make your experience as smooth as possible. If you ever need assistance or have any questions, please don't hesitate to reach out to us – <a class="text-primary" routerLink="/contact">Contact Us</a>
+      </p>
+    </div>
+    <div class="border rounded mx-auto shadow w-50 my-5" >
+      <!-- contact form -->
+      <div class="content-form-right p-0 ">
+        <div class="form-w3ls p-md-5 p-4">
+          <h4 class="mb-4 sec-title-w3">Evaluate your student</h4>
+          <form
+            [formGroup]="gradeForm"
+          >
+            <div class="row">
+              <div class="col-sm-12 form-group pr-sm-1">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Evaluation"
+                  formControlName="evaluation"
+                  [(ngModel)]="grade.evaluation"
+                />
+              </div>
+              <div
+                class="col-sm-12 text-danger text-center mb-3"
+                *ngIf="
+                  gradeForm.controls['evaluation'].invalid &&
+                  (gradeForm.controls['evaluation'].touched ||
+                    gradeForm.controls['evaluation'].dirty)
+                "
+              >
+                <div *ngIf="gradeForm.controls['evaluation'].errors.required">
+                  field is required
+                </div>
+                <div *ngIf="gradeForm.controls['evaluation'].errors.minlength">
+                  needs to be at least 4 characters
+                </div>
+              </div>
+              <div class="col-sm-12 form-group pr-sm-1">
+                <input
+                  class="form-control"
+                  type="number"
+                  placeholder="Note"
+                  formControlName="note"
+                  [(ngModel)]="grade.note"
+                />
+              </div>
+              <div
+                class="col-sm-12 text-danger text-center mb-3"
+                *ngIf="
+                  gradeForm.controls['note'].invalid &&
+                  (gradeForm.controls['note'].touched ||
+                    gradeForm.controls['note'].dirty)
+                "
+              >
+                <div *ngIf="gradeForm.controls['note'].errors.required">
+                  Field is required or Format not valid
+                </div>
+                <div *ngIf="gradeForm.controls['note'].errors.min || gradeForm.controls['note'].errors.max ">
+                  please type in a value between 0 and 20
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!grade._id" class="input-group1 text-center">
+              <button class="btn button-style" type="submit" [disabled]="gradeForm.invalid" (click)="newGrade()">
+                Add Grade
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div *ngIf="grade._id" class="input-group1 text-center">
+              <button class="btn button-style" type="submit" [disabled]="gradeForm.invalid" (click)="update()">
+                Update Grade
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

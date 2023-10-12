@@ -1,0 +1,16 @@
+<app-page-banner *ngIf="pageUrl != '/'" title="Courses"></app-page-banner>
+<div class="w3l-index-block4 pb-5">
+  <div class="features-bg pb-lg-5 pt-lg-4 py-4">
+      <div class="container">
+          <div class="title-main text-center mx-auto mb-md-4">
+              <h3 class="title-big">Our Special Courses</h3>
+              <p class="sub-title mt-2">Discover our range of special courses designed to elevate your learning experience. These courses offer unique insights and expertise to help you excel in your chosen field.</p>
+          </div>
+          <div class="row">
+              <div *ngFor="let m of coursesTab" class="col-lg-4 col-md-6 features15-col-text">
+                  <app-single-course [course]="m"></app-single-course>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
