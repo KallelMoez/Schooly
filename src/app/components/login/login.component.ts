@@ -53,7 +53,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-  // decodeToken(token: string) {
-  //   return jwt_decode(token);
-  //   }
 }

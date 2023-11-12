@@ -16,6 +16,8 @@ export class AuthGuardService implements CanActivate{
     }else{
       let decodedToken:any = decodeToken(token);
       if (route.data.expectedRoles.includes(decodedToken.role)){
+        console.log(route.data.expectedRoles);
+        
         return true;
       }else{
         this.router.navigate(["/"]);
